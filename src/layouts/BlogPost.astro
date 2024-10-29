@@ -1,15 +1,16 @@
 ---
 import type { CollectionEntry } from "astro:content";
+import { getCollection } from "astro:content";
 import BaseHead from "@components/BaseHead.astro";
 import Header from "@components/Header.astro";
 import Footer from "@components/Footer.astro";
-import CreditPhoto from "@components/CreditPhoto.astro";
 import RelatedArticles from "@components/RelatedArticles.astro";
 import TagsList from "@components/TagsList.astro";
 import CallToAction from "@components/CallToAction.astro";
-import FormattedDate from "../components/FormattedDate.astro";
+import Summary from '@components/Summary.astro';
 
 type Props = CollectionEntry<"blog">["data"];
+const posts = await getCollection('blog');
 
 const {
   title,
@@ -22,9 +23,32 @@ const {
   tags
 } = Astro.props;
 
+const post = posts.filter((e) => e.data.title === title)[0];
+
 const base = import.meta.env.BASE_URL;
 const site = import.meta.env.SITE;
 const ogImage = site + base + banner;
+console.log(post);
+const headings = []; // Pour stocker les titres
+
+function slugify(text) {
+  return text
+      .toString()
+      .toLowerCase()
+      .replace(/\s+/g, '-')           // Remplace les espaces par des tirets
+      .replace(/[^\w\-]+/g, '')       // Supprime tous les caractères non-word
+      .replace(/\-\-+/g, '-')         // Remplace les multiples tirets par un seul
+      .replace(/^-+/, '')             // Supprime les tirets au début
+      .replace(/-+$/, '');            // Supprime les tirets à la fin
+}
+
+// Utiliser un parser Markdown pour extraire les titres
+  const contentWithHeadings = post.body.replace(/(#+)\s*(.*)/g, (match, hash, title) => {
+    const level = hash.length; // Niveau du titre
+    const id = slugify(title);
+    headings.push({ id, text: title }); // Ajouter à la liste des titres
+    return `<h${level} id="${id}">${title}</h${level}>`; // Remplacer par le titre avec ID
+  });
 ---
 
 <html lang="en">
@@ -37,6 +61,7 @@ const ogImage = site + base + banner;
 
   <body>
     <Header />
+    <Summary headings={headings} title={title}/>
     <main class="w-[calc(100%-2em)] max-w-full m-0">
       <article>
         <div class="relative w-full max-w-4xl mx-auto">

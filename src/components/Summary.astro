@@ -1,0 +1,64 @@
+---
+// Props
+const { headings, title } = Astro.props;
+
+function slugify(text) {
+    return text
+        .toString()
+        .toLowerCase()
+        .replace(/\s+/g, '-')           // Remplace les espaces par des tirets
+        .replace(/[^\w\-]+/g, '')       // Supprime tous les caractères non-word
+        .replace(/\-\-+/g, '-')         // Remplace les multiples tirets par un seul
+        .replace(/^-+/, '')             // Supprime les tirets au début
+        .replace(/-+$/, '');            // Supprime les tirets à la fin
+}
+---
+<div class="fixed right-0 top-20 z-50 transition-transform duration-300" id="sommaire-container">
+    <button
+            id="toggle-sommaire"
+            class="absolute -left-8 top-0 bg-black text-yellow-400 p-2 rounded-l-md hover:bg-yellow-400 hover:text-black transition-colors duration-300"
+            aria-label="Afficher/Masquer le sommaire"
+    >
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+        </svg>
+    </button>
+    <nav class="bg-black p-4 shadow-lg rounded-l-lg w-64 max-h-[calc(100vh-120px)] overflow-auto">
+        <h2 class="text-xl text-white font-bold mb-4"><a href={`#${slugify(title)}`} class="text-md text-white font-bold hover:text-yellow-400">
+            {title}
+        </a></h2>
+        <ul class="space-y-2">
+            {headings.map((heading) => (
+                    <li class="text-lg">
+                        <a href={`#${slugify(heading.text)}`} class="text-md text-white font-bold hover:text-yellow-400">
+                            {heading.text}
+                        </a>
+                    </li>
+            ))}
+        </ul>
+    </nav>
+</div>
+
+<script>
+    const sommaireContainer = document.getElementById('sommaire-container');
+    const toggleButton = document.getElementById('toggle-sommaire');
+
+    function toggleSommaire() {
+        sommaireContainer.classList.toggle('translate-x-full');
+    }
+
+    function hideSommaire() {
+        sommaireContainer.classList.add('translate-x-full');
+    }
+
+    // Gérer le clic sur le bouton de bascule
+    toggleButton.addEventListener('click', toggleSommaire);
+
+    // Gérer les clics sur les liens du sommaire
+    sommaireContainer.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', hideSommaire);
+    });
+
+    // Initialisation : cacher le sommaire au chargement de la page
+    hideSommaire();
+</script>
