@@ -1,5 +1,4 @@
 ---
-import type { CollectionEntry } from "astro:content";
 import { getCollection } from "astro:content";
 import BaseHead from "@components/BaseHead.astro";
 import Header from "@components/Header.astro";
@@ -9,7 +8,6 @@ import TagsList from "@components/TagsList.astro";
 import CallToAction from "@components/CallToAction.astro";
 import Summary from '@components/Summary.astro';
 
-type Props = CollectionEntry<"blog">["data"];
 const posts = await getCollection('blog');
 
 const {
@@ -28,27 +26,38 @@ const post = posts.filter((e) => e.data.title === title)[0];
 const base = import.meta.env.BASE_URL;
 const site = import.meta.env.SITE;
 const ogImage = site + base + banner;
-console.log(post);
-const headings = []; // Pour stocker les titres
 
-function slugify(text) {
+interface Heading {
+  id: string;
+  text: string;
+}
+
+const headings : Heading[] = [];
+
+function slugify(text: string): string {
   return text
       .toString()
+      .normalize('NFD')           // Décompose les caractères accentués
+      .replace(/[\u0300-\u036f]/g, '') // Supprime les diacritiques
       .toLowerCase()
-      .replace(/\s+/g, '-')           // Remplace les espaces par des tirets
-      .replace(/[^\w\-]+/g, '')       // Supprime tous les caractères non-word
-      .replace(/\-\-+/g, '-')         // Remplace les multiples tirets par un seul
-      .replace(/^-+/, '')             // Supprime les tirets au début
-      .replace(/-+$/, '');            // Supprime les tirets à la fin
+      .trim()
+      .replace(/\s+/g, '-')       // Remplace les espaces par des tirets
+      .replace(/[^\w-]+/g, '')    // Supprime les caractères non-word
+      .replace(/--+/g, '-');      // Remplace les tirets multiples par un seul
 }
 
 // Utiliser un parser Markdown pour extraire les titres
-  const contentWithHeadings = post.body.replace(/(#+)\s*(.*)/g, (match, hash, title) => {
-    const level = hash.length; // Niveau du titre
-    const id = slugify(title);
-    headings.push({ id, text: title }); // Ajouter à la liste des titres
-    return `<h${level} id="${id}">${title}</h${level}>`; // Remplacer par le titre avec ID
-  });
+const contentWithHeadings = post.body.replace(/^##\s+(.*?)$/gm, (match, title) => {
+  const id = slugify(title);
+  headings.push({ id, text: title }); // Ajouter à la liste des titres
+  return `<h2 id="${id}">${title}</h2>`; // Remplacer par le titre avec ID
+});
+
+// Supprimer les marqueurs Markdown des autres niveaux de titres
+const finalContent = contentWithHeadings.replace(/^(#{1,6})\s+(.*?)$/gm, (match, hashes, title) => {
+  if (hashes === '##') return match; // Ne pas modifier les h2 déjà traités
+  return `<h${hashes.length}>${title}</h${hashes.length}>`;
+});
 ---
 
 <html lang="en">
