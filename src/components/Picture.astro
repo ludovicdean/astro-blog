@@ -1,0 +1,7 @@
+---
+import { Image } from "astro:assets";
+const { image, caption } = Astro.props;
+---
+<div class="flex justify-center pb-5">
+    <Image src={ image } alt={ caption } class="mx-auto py-5" />
+</div>

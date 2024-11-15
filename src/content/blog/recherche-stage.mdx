@@ -13,6 +13,13 @@ unsplashlink : "https://unsplash.com/fr/photos/groupe-de-personnes-utilisant-un-
 isArticle : true
 ---
 
+import Picture from "@components/Picture.astro";
+
+import recherchestagetimeline from "../../assets/images/recherche-stage-timeline.png";
+import recherchestagereseauprovsperso from "../../assets/images/recherche-stage-reseau-pro-vs-perso.png";
+import recherchestageorganizer from "../../assets/images/recherche-stage-organizer.png";
+import recherchestagelinkedinvsproches from "../../assets/images/recherche-stage-linkedin-vs-proches.png";
+
 Suite à mon article sur la reconversion, qui semble avoir touché un peu plus de monde que d’habitude un lecteur que je remercie a soulevé l’absence de mention concernant les difficultés de la recherche de stage / d’alternance.
 
 Ce fameux article ayant déjà été publié, c'est pour moi l’occasion de me focaliser sur cet aspect présent dans la plupart des formations professionnalisantes, la recherche de stage.
@@ -39,7 +46,7 @@ Vous êtes “installé” dans votre rôle d’étudiant, vous commencez à acq
 
 En résumé, votre formation devrait globalement suivre la chronologie suivante.
 
-!["Chronologie raisonnable de votre formation"](/devendevenir/images/recherche-stage-timeline.png)
+<Picture image={recherchestagetimeline} caption="Chronologie raisonnable de votre formation" />
 
 Cela vous permettra de mener de front votre formation ainsi que votre recherche de stage. Mais à l'instar de la formation, la recherche de stage peut également être découpée en plusieurs étapes.
 
@@ -90,7 +97,7 @@ Je considère que les deux cibles que sont LinkedIn et votre entourage sont auss
 
 Si on regarde le schéma suivant, on peut voir que le nombre de liens directs vers des entreprises intéressantes pour votre futur stage est bien plus grand quand on passe par votre entourage que par votre réseau professionnel.
 
-![""](/devendevenir/images/recherche-stage-reseau-pro-vs-perso.png)
+<Picture image={recherchestagereseauprovsperso} caption="" />
 
 Vous multiplierez les points d'entrée dans le domaine en vous appuyant sur votre entourage, et ce seront des points d'entrée forts.
 Rien n’est plus marquant comme entrée en contact que la rencontre organisée par un intermédiaire connu des deux parties. Un CV parmi d'autres pourra faire bonne impression, mais rencontrer la personne derrière ce CV aura toujours plus d'impact.
@@ -115,7 +122,7 @@ Cela vous permettra de suivre vos démarches et de centraliser les informations 
 
 Dans les deux cas, vous devriez aboutir à ce type de tableau.
 
-!["Modèle d'organiseur de recherche de stage."](/devendevenir/images/recherche-stage-organizer.png)
+<Picture image={recherchestageorganizer} caption="Modèle d'organiseur de recherche de stage." />
 ### Soyez prudent
 
 Vous vous entendez probablement bien avec une bonne partie de votre promotion, mais tant que vous n'avez pas décroché de convention de stage, silence radio sur les entreprises avec lesquelles vous avez des contacts, les pistes que vous avez, leur provenance etc.
@@ -142,7 +149,7 @@ De ma propre expérience, j’ai pu constater (dans mon ancienne vie de chimiste
 
 J’ai pu comparer les candidatures via mon entourage aux candidatures via les réseaux sociaux professionnels, et le constat est sans appel !
 
-![Comparatif des résultats de candidatures effectuées via LinkedIn par rapport aux candidatures portées par des proches.](/devendevenir/images/recherche-stage-linkedin-vs-proches.png)
+<Picture image={recherchestagelinkedinvsproches} caption="Comparatif des résultats de candidatures effectuées via LinkedIn par rapport aux candidatures portées par des proches." />
 
 Candidater partout m’a permis de toucher un grand nombre de personnes avec un taux de retour minime, alors qu’à l’inverse, une frappe chirurgicale peut être synonyme de réussite ! Gardez-bien à l’esprit que **vos proches sont une mine d’or** pour vous, même s’ils ne travaillent pas dans votre domaine, autant pour leur soutien que pour l’aide qu’ils pourraient vous fournir.
 

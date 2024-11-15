@@ -12,6 +12,11 @@ unsplashlink : "https://unsplash.com/fr/photos/une-boite-de-crayons-de-couleur-e
 isArticle : true
 ---
 
+import Picture from "@components/Picture.astro";
+
+import picocssconditional from "../../assets/images/PicoCSS-conditional.png";
+import picocsstest from "../../assets/images/PicoCSS-test.png";
+
 PicoCSS est un framework CSS minimaliste. Il a pour objectif de faciliter le développement de page web sans pour autant renoncer à avoir du style.
 C'est l'allié parfait pour ébaucher une page web rapidement, sans trop plonger dans les méandres du CSS. Nous nous intéresserons ici à la version actuelle, la 2.0.6.
 
@@ -113,7 +118,7 @@ Pico regular possède une dizaine de classes permettant de gérer l'affichage de
 
 L'exemple ci-dessous a été réalisé avec le thème orange de PicoCSS, en une dizaine de minutes.
 
-!["Page réalisée avec PicoCSS"](/devendevenir/images/PicoCSS-test.png)
+<Picture image={picocsstest} caption="Page réalisée avec PicoCSS" />
 
 Si l'on se penche sur le code derrière cette page web, on peut observer plusieurs éléments.
 La balise head contient des liens vers 2 fichiers PicoCSS, l'un pour le thème, l'autre pour avoir accès à toutes les couleurs existantes. Vous ne pourrez utiliser les couleurs PicoCSS qu'en ajoutant à votre projet le fichier pico.colors.min.css.
@@ -179,7 +184,7 @@ PicoCSS vous permet bien entendu d'utiliser des fichiers CSS personnalisés. La 
 
 L'ajout d'une classe `class="pico"` à un élément HTML permet d'indiquer que les éléments enfants de cette balise seront stylisés par PicoCSS. L'image suivante présente un formulaire avec un champ stylisé par PicoCSS tandis que le second possède l'affichage par défaut du navigateur.
 
-!["Formulaire stylisé avec ou sans PicoCSS"](/devendevenir/images/PicoCSS-conditional.png)
+<Picture image={picocssconditional} caption="Formulaire stylisé avec ou sans PicoCSS" />
 
 ```html
 <body>

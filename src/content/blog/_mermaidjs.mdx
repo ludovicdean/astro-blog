@@ -11,6 +11,13 @@ authorlink : "https://unsplash.com/fr/@jakubzerdzicki?utm_content=creditCopyText
 unsplashlink : "https://unsplash.com/fr/photos/une-telecommande-posee-sur-une-table-ip7GFn5JqX8?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash"
 isArticle : true
 ---
+import Picture from "@components/Picture.astro";
+
+import mermaidjsexample1 from "../../assets/images/mermaidjs-example1.png";
+import mermaidjsexample2 from "../../assets/images/mermaidjs-example2.png";
+import mermaidjsexample3 from "../../assets/images/mermaidjs-example3.png";
+import mermaidjsexample4 from "../../assets/images/mermaidjs-example4.png";
+import mermaidjsexample5 from "../../assets/images/mermaidjs-example5.png";
 
 Vous en avez marre de créer des schémas d’infrastructures, de processus au format image, mis à jour régulièrement et très chronophage ?
 
@@ -167,7 +174,8 @@ flowchart LR
   C[Fichier md] --> D[Fichier md + svg]
 ```
 
-![](/devendevenir/images/mermaidjs-example1.png)
+<Picture image={mermaidjsexample1.png} caption="Diagramme avec le style de base de MermaidJS" />
+
 Si vous souhaitez personnaliser le style de notre diagramme (qu’il s’agisse d’un diagramme de flux ou d’un autre type de diagramme), vous pouvez utiliser le code suivant. Il n’existe qu’un seul thème natif personnalisable, il s’agit du thème “base”.
 
 ```mermaid
@@ -210,7 +218,7 @@ flowchart TD
   E[E] --- F[F]
 ```
 
-![](/devendevenir/images/mermaidjs-example2.png)
+<Picture image={mermaidjsexample2} caption="" />
 
 
 Trop de rectangles tuent les diagrammes, c’est bien connu ! Pourquoi ne pas varier la forme des éléments de vos diagrammes ?
@@ -221,7 +229,8 @@ flowchart LR
   H{{H}} --> I>I] --> J[/J/] -->	K[\K\] -->	L[/L\] --> M[\M/] --> N(((N)))
 ```
 
-![](/devendevenir/images/mermaidjs-example3.png)
+
+<Picture image={mermaidjsexample3} caption="" />
 
 MermaidJS présente également une grande variété de liens, et les boucles ne posent pas de problème. Les liens peuvent porter du texte, la syntaxe étant légèrement différente.
 
@@ -231,7 +240,7 @@ flowchart LR
 	F-.- G -.texte.- H ==> I == texte === J == texte ==> K --> J
 ```
 
-![](/devendevenir/images/mermaidjs-example4.png)
+<Picture image={mermaidjsexample4} caption="" />
 
 On peut également créer des sous-graphes, qui permettent de regrouper visuellement des éléments comme appartenant à une seule entité, à un seul bloc.
 
@@ -249,7 +258,7 @@ flowchart TB
     end
 ```
 
-![""](/devendevenir/images/mermaidjs-example5.png)
+<Picture image={mermaidjsexample5} caption="Exemple de schéma avec des sous-graphes." />
 
 On peut également intégrer des liens aux diagrammes MermaidJS.
 

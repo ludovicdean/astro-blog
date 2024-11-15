@@ -11,6 +11,10 @@ authorlink : "https://unsplash.com/fr/@iurte?utm_content=creditCopyText&utm_medi
 unsplashlink : "https://unsplash.com/fr/photos/lot-de-blocs-de-construction-bleus-TL5Vy1IM-uA?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash"
 isArticle : true
 ---
+import Picture from "@components/Picture.astro";
+
+import tailblocks from "../../assets/images/tailblocks.png";
+
 Si vous avez déjà fureté sur le site de Tailwind CSS, vous avez sûrement jeté un oeil aux composants qu’il propose. Ces composants sont très esthétiques, agréables à l’oeil, mais ils présentent un inconvénient majeur, leur prix.
 
 Dès que l’on souhaite accéder à leur code, on se heurte à une interface nous invitant à sortir notre carte bancaire afin d’obtenir les composants nous ayant tapé dans l’oeil.
@@ -98,7 +102,7 @@ Comme indiqué juste ici, vous n’avez plus qu’à coller le code de votre com
 
 Sur votre écran, vous devriez obtenir un rendu proche de ceci :
 
-![Exemple de composant Tailblocks](/devendevenir/images/tailblocks.png)
+<Picture image={tailblocks} caption="Exemple de composant Tailblocks" />
 
 J'ai pris un composant peu volumineux afin d'éviter un énorme pavé de code.
 

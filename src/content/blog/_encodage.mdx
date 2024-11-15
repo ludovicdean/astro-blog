@@ -11,6 +11,8 @@ authorlink : "https://unsplash.com/fr/@markusspiske?utm_content=creditCopyText&u
 unsplashlink : "https://unsplash.com/fr/photos/photo-du-film-matrix-iar-afB0QQw?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash"
 isArticle : true
 ---
+import encodagecodebaudot from "../../assets/images/encodage-code-baudot.png";
+import encodageascii from "../../assets/images/encodage-ascii.png";
 Développeur ou non, vous avez sûrement vu plus d’une fois ce type d’étrangetés sur un site web, ou dans un fichier de votre ordinateur. Surgi de nulle part, un mot contenant Ã© en lieu et place d’un caractère accentué (été devient Ã©tÃ© par exemple).
 
 Je me suis posé la question de l’origine de ces caractères bizarres bien avant de m’intéresser au développement, mais j’étais encore chimiste à l’époque (personne n’est parfait) et n’ai pas cherché l’explication. Je l’ai récemment obtenue au cours d’une conférence donnée au BreizhCamp par Guillaume Collic dont l’enregistrement est disponible ici (https://www.youtube.com/@BreizhCamp).
@@ -79,7 +81,7 @@ Le télégraphe utilisait des séries de sons, un bruit court correspondait à u
 
 Pour la personne “au bout du fil”, entendre la série de sons indiquée plus haut tout en ayant une table de correspondance comme la suivante, permettait de restituer le message.
 
-![Table de correspondance du code Baudot](/devendevenir/images/encodage-code-baudot.png)
+<Picture image={encodagecodebaudot} caption="Table de correspondance du code Baudot" />
 
 Cela ne vous aura pas échappé, la technologie a évolué depuis le télégraphe, et nous sommes entrés depuis quelques décennies dans l’ère de l’informatique et de l’échange de données permanent. Le Morse c’était pratique, mais uniquement adapté aux langues latines (langues écrites avec l’alphabet que nous connaissons), et très limité en termes de quantité de données rapportée au temps de transmission.
 
@@ -98,7 +100,7 @@ Ce que je viens de décrire correspond à l’American Standard Code for Informa
 
 Voici la table ASCII telle qu’on la connaît, avec l’ensemble des caractères qu’elle contient.
 
-![Table ASCII.](/devendevenir/images/encodage-ascii.png)
+<Picture image={encodageascii} caption="Table ASCII." />
 
 On doit cette norme à l’ISO (Organisation Internationale de Normalisation, oui oui, c’est normal que le nom ne corresponde pas au sigle), et la première version de la norme ASCII est sortie en 1963.
 

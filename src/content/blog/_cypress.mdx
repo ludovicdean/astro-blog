@@ -12,6 +12,11 @@ unsplashlink : "https://unsplash.com/fr/photos/texte-blanc-sur-fond-violet-pW3Td
 isArticle : true
 ---
 import Video from "@components/Video.astro";
+import Picture from "@components/Picture.astro";
+
+import cypresswelcomepage from "../../assets/images/cypress-welcome-page.png";
+import cypressarborescence from "../../assets/images/cypress-arborescence.png";
+import cypresstestpage from "../../assets/images/cypress-test-page.png";
 
 Une application, un site web sont avant tout destinés à être utilisés par les bien-nommés "utilisateurs". Devoir faire une qualification complète de ses applications après chaque modification peut rapidement devenir fastidieuse.
 
@@ -23,7 +28,7 @@ Une fois vos tests mis en place, plus de doutes, plus d'oublis d'une partie recu
 
 Comme toujours vous aurez besoin d'un éditeur de code comme Visual Studio Code ou un autre, peu importe ce que vous avez, ainsi que d'un terminal.
 
-Si ce n'est pas déjà le cas sur votre machine, vous devrez installer NodeJS. Vous trouvrez le nécessaire [ici](https://nodejs.org/en/download/current).
+Si ce n'est pas déjà le cas sur votre machine, vous devrez installer NodeJS. Vous trouvrez le nécessaire <Picture image={} caption="ici" />(https://nodejs.org/en/download/current).
 
 Afin de vérifier que l'installation s'est bien passée, ouvrez votre terminal et saisissez `node -v`. Si tout s'est bien passé, votre terminal affichera la version de NodeJS installée.
 
@@ -34,7 +39,7 @@ Dernière étape de l'installation, saisissez la commande `npm install cypress`.
 ## Démarrez votre projet
 
 Une fois l'installation terminée, ouvrez votre projet avec votre éditeur de code. Ouvrez un terminal et lancez la commande `npx cypress open`. Une fenêtre s'ouvre, c'est l'écran de démarrage de Cypress qui vous souhaite la bienvenue.
-![Page de démarrage de Cypress](/devendevenir/images/cypress-welcome-page.png)
+<Picture image={cypresswelcomepage} caption="Page de démarrage de Cypress" />
 
 Suivez le guide, Cypress vous indique tout.
 
@@ -46,7 +51,7 @@ Si vous avez fait attention, l'arborescence de votre projet a changé.
 
 Alors qu'initialement votre projet n'était constitué que d'un dossier node_modules et de deux fichiers package.json et package-lock.json, de nouveaux éléments sont apparus.
 
-![Arborescence du projet Cypress](/devendevenir/images/cypress-arborescence.png)
+<Picture image={cypressarborescence} caption="Arborescence du projet Cypress" />
 
 Le dossier cypress contient les éléments suivants :
 
@@ -60,13 +65,13 @@ Lorsque vous démarrez le projet, la fenêtre qui s'ouvre affiche tout simplemen
 
 Quand vous cliquez sur un fichier, une nouvelle page s'ouvre, et l'exécution des tests (de ce fichier) se lance automatiquement.
 
-![Page de test de Cypress](/devendevenir/images/cypress-test-page.png)
+<Picture image={cypresstestpage} caption="Page de test de Cypress" />
 
 Avoir des tests qui fonctionnent mais sur un site qui n'est pas le vôtre, c'est intéressant mais ce n'est pas votre but. Conservez les fichiers pour mémoire ou supprimez-les, il est temps de créer vos propres tests.
 
 ## À quoi ça ressemble un test Cypress ?
 
-Les fichiers de tests peuvent avoir différents formats (pour en savoir plus, allez `[ici](https://docs.cypress.io/guides/core-concepts/writing-and-organizing-tests)), .js, .ts, les options sont nombreuses.
+Les fichiers de tests peuvent avoir différents formats (pour en savoir plus, allez `<Picture image={} caption="ici" />(https://docs.cypress.io/guides/core-concepts/writing-and-organizing-tests)), .js, .ts, les options sont nombreuses.
 Pour ma part j'ai travaillé avec des fichiers .js. Les fichiers générés par cypress sont situés dans le dossier e2e, il est possible de structurer son projet avec un ensemble de sous-dossiers afin de s'y retrouver.
 Les fichiers sont nommés en  selon le format **mon_fichier.cy.js**, ce qui corespond à l'écriture "snake case". Les mots sont en minuscules et séparés par des "_".
 
@@ -87,7 +92,7 @@ describe('example to-do app', () => {
 
   it('can add new todo items', () => {
     const newItem = 'Feed the cat'
-    cy.get('[data-test=new-todo]').type(`${newItem}{enter}`)
+    cy.get('<Picture image={} caption="data-test=new-todo" />').type(`${newItem}{enter}`)
     cy.get('.todo-list li')
       .should('have.length', 3)
       .last()
@@ -171,11 +176,11 @@ Cette commande permet de récupérer un élément présent dans le code html de 
   })
 ```
 
-- le texte d'un attribut de balise (a[href*="texte"])
+- le texte d'un attribut de balise (a<Picture image={} caption="href*="texte"" />)
 
 ```javascript
   it('get avec le contenu d''un attribut', () => {
-    cy.get('a[href*="texte"]')
+    cy.get('a<Picture image={} caption="href*="texte"" />')
   })
 ```
 
@@ -279,7 +284,7 @@ Le premier argument de la commande should() est une chaîne de caractère corres
 Pour l'exemple précédent, les assertions vérifient que l'élément existe, qu'il est visible, qu'il possède au moins un élément et possède la classe CSS maClasse.
 
 Il existe une très grande variété d'opérateurs utilisables avec la commande should(), ceux-ci étant issus de plusieurs bibliothèques d'assertions (Chai, Sinon-Chai, Chai-jQuery).
-Cet article ne prétend pas être exhaustif, et pour ceux qui chercheraient une liste exhaustive de ces opérateurs, c'est [ici](https://docs.cypress.io/guides/references/assertions).
+Cet article ne prétend pas être exhaustif, et pour ceux qui chercheraient une liste exhaustive de ces opérateurs, c'est <Picture image={} caption="ici" />(https://docs.cypress.io/guides/references/assertions).
 
 ## L'asynchronisme 
 
