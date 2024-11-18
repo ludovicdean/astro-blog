@@ -8,7 +8,7 @@ import icon from "astro-icon"
 // https://astro.build/config
 export default defineConfig({
   site: 'https://ludovic.dean.github.io',
-  base: '',
+  base: '/devendevenir',
   integrations: [mdx(), sitemap(), tailwind(), icon()],
   output: "static"
 });
